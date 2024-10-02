@@ -17,15 +17,21 @@ function setUserName() {
   let myName = prompt("Please enter your name.");
   //prompt() 함수는 alert()와 비슷하다.
   //사용자에게 어떤 데이터를 입력하길 요청하고 그 값을 변수에 저장할 수 있다.
-  localStorage.setItem("name", myName);
-  //localStorage로 저장한 데이터는 브라우저 세션 간에 공유된다.
-  //localStorage 데이터는 만료되지 않는다.
-  if (!localStorage.getItem("name")) {
+  if (!myName || myName === null) {
     setUserName();
   } else {
-    let storedName = localStorage.getItem("name");
-    myHeading.textContent = "Mozilla is cool, " + myName;
+    localStorage.setItem("name", myName);
+    myHeading.innerHTML = "Mozilla is cool, " + myName;
   }
+  //   localStorage.setItem("name", myName);
+  //   //localStorage로 저장한 데이터는 브라우저 세션 간에 공유된다.
+  //   //localStorage 데이터는 만료되지 않는다.
+  //   if (!localStorage.getItem("name")) {
+  //     setUserName();
+  //   } else {
+  //     let storedName = localStorage.getItem("name");
+  //     myHeading.textContent = "Mozilla is cool, " + myName;
+  //   }
   /*
   if문 사용이유
   만약에 myName이 입력되지 않았다면 setUsername을 다시 실행시킨다.
